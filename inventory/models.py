@@ -10,5 +10,6 @@ class Product (models.Model):
     date_appdated = models.DateTimeField(auto_now = True)
     stock = models.PositiveIntegerField()
     Vendor = models.ForeignKey(Vendor, null=True, on_delete=models.CASCADE)
+
  
   
