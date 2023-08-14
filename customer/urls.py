@@ -9,6 +9,7 @@ urlpatterns =[
     
     path ("customers/upload/", customer_upload_view, name = "customer_uploadview"),
     path("customers/list",customer_list_view,name ="customer_list_view"),
-    path("customers/<int:id>/",customer_detail, name="customer_detail_view"),
-    path("customers/edit/<int:id>", customer_update_view, name = "customer_update_view"),    
+    path("customers/<int:id>/",customer_detail,name="customer_detail_view"),
+    path("customers/edit/<int:id>", customer_update_view, name = "customer_update_view"),
+
 ]

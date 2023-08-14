@@ -7,24 +7,19 @@
 
     <style>
         body {
-             background-color: #d3f0fc;
+             background-color: #adb5bd;
              font-family: Arial, sans-serif;
              margin: 0;
              padding: 0;
-         }
-         
+         }        
          .product-container {
-             display: flex;
-             flex-wrap: wrap;
-             padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
          }
- 
          .product{
              border:none;
              width: 350px;
-             height: 40vh;
-             background-color: rgb(177, 220, 241);
-             box-shadow: 0 2px 4px rgb(0.2, 0.2, 0.2, 0.8);
              margin: 20px;
              padding: 20px;
              justify-content: center;
@@ -38,36 +33,40 @@
          padding: 10px 20px;
          text-decoration: none;
          border-radius: 5px;
-         background-color: rgb(48, 166, 48);
+         background-color: #2b8a3e;
          color: white;
          font-weight: 600;
  
         }
- 
         .images{
-         width: 70%;
+            width: 100%;
+            border-radius: 30%;
+        }
+        .heading{
+            margin-left: 45%;
+            font-size: 40px;
+            color: #212529;
         }
      </style>
 
 </head>
 <body>
-    <h3>Products List</h3>
-    <table>
-        <th>
-            <td>Name</td>
-            <td>Description</td>
-            <td>Price</td>
-        </th>
-        <tr>
+    <h1 class="heading">Product List</h1>
+   <div class="product-container">     
         {% for product in products %}
-        <td>{{product.name}}</td>
-        <td>{{product.description}}</td>
-        <td>{{product.price}}</td>
-        <td><a href="{% url 'product_detail_view' product.id %}"> View product </a></td>
-        <td><a href="{% url 'product_edit_view' id=product.id %}" class="edit">Edit Details</a></td> 
+        <div class="product">
+            <img src="{{ product.image.url }}" alt="{{ product.title}}" class="images">
+            <p class="product-title"> {{product.name}}</p>
+            <p> {{product.price}}</p>
+            <p> {{product.description}}</p>
+            <div class="product-buttons"> 
+                <a href="{% url 'product_detail_view' id=product.id %}">View Details</a>
+                <a href="{% url 'product_edit_view' id=product.id %}" >Edit Details</a>
+        </div> 
 
-    </tr>
-    {%endfor%}
-    </table>
+
+        </div>
+        {% endfor%}
+    </div>
 </body>
 </html>

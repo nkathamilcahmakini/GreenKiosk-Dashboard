@@ -4,17 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Customer</title>
+
+    <style>
+        body {
+            background-color: #adb5bd;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .edit-product{
+            margin-left: 30%;
+            font-size: 20px;
+        }
+        button[type="submit"] {
+            background-color: #2b8a3e;
+            color: #212529;
+            font-size: 20px;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 4px;
+            cursor: pointer;
+            align-self: flex-start;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #7048e8;
+        }    
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+       
+    </style>
 </head>
 <body>
 
-    
+    <div class="edit-product">  
     <h2 class="edit">Edit Customer Details</h2>
     <form method="POST">
         {% csrf_token %}
         {{form.as_p}}
 
         <button type="submit">Save</button>
-
     </form>
+    </div>  
 </body>
 </html>
