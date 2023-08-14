@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
+    <title>Edit Product</title>
+</head>
+<body>
     <style>
         body {
             background-color:#ccdbe1 ;
@@ -59,16 +60,14 @@
             background-color: #2980b9;
         }
     </style>
+    
+    <h2 class="edit">Edit Delivery Details</h2>
+    <form method="POST">
+        {%csrf_token%}
+        {{form.as_p}}
 
+        <button type="submit">Save</button>
 
-
-</head>
-<body>
-   <h2>Edit Product</h2>
-   <form method="POST">
-    {%csrf_token%}
-    {{form.as_p}}
-    <button type="submit">Save</button>
-   </form>
+    </form>
 </body>
 </html>
