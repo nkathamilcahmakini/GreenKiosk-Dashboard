@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .upload-form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .upload-heading {
+            margin-bottom: 35%;
+        }
+
+        .upload-form input[type="text"],
+        .upload-form input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .upload-form button[type="submit"] {
+            background-color: #2b8a3e;
+            color: #ffffff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 50%;
+            font-size: 20px;
+        }
+
+        .upload-form button[type="submit"]:hover {
+            background-color: #7048e8;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <h3 class="upload-heading">Payment</h3>
+    <form method="POST" class="upload-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>

@@ -3,31 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GreenKiosk</title>
-
-
-    </head>
-    <body>
     
-<div class="cart-container">
-      
+    <style>
+        .product-card {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid black;
+        }       
+        .product-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 5px;
+            margin-right: 20px;
+        }       
+        .product-details {
+            font-size: 20px;
+        }       
+        .product-name {
+            font-weight: bold;
+        }       
+        .payment-button {
+            margin-left: auto;
+        }     
+        .payment-button button {
+            background-color:  #2b8a3e;
+            color: white;
+            border-radius: 5px;
+            padding: 8px 16px;
+            cursor: pointer;
+            padding: 10px 20px;
+
+        }   
+        .payment-button button:hover {
+            background-color: #7048e8;
+        }
+    </style>
+    
+    <title>Document</title>
+</head>
+<body>
+    <div class="product-list">
         {% for cart in carts %}
-        <div class="cart">
-            <img src="{{cart.image.url }}" alt="{{ cart.title}}" class="images">
-            <p class="cart-title"> {{cart.products}}</p>
-            <p> {{cart.customer_ID}}</p>
-            <p> {{cart.list_of_items}}</p>
-            <p> {{cart.quantity_of_items}}</p>
-
-            <div class="cart-buttons"> 
-                <a href="{% url 'cart_detail_view' id=cart.id %}">View Details</a>
-
-                <a href="{% url 'cart_update_view' id=cart.id %}" class="edit">Edit Details</a>
-        </div> 
-
-
+        <div class="product-card">
+            <img class="product-image" src="{{ cart.image.url }}" alt="Product Image">
+            <div class="product-details">
+                <p class="product-name">{{ cart.name }}</p>
+                <p>Price: {{ cart.price }}</p>
+                <p>Quantity: {{ cart.quantity }}</p>
+                <p>Payment Options: {{ cart.paymentoptions }}</p>
+            </div>
+            <div class="payment-button">
+                <a href="{% url 'create_payment_view' %}"> <button>Pay</button></a>
+            </div>
         </div>
-        {% endfor%}
+        {% endfor %}
     </div>
 </body>
 </html>

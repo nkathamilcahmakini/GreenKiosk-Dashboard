@@ -3,67 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+   
+    <title>Product Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+        
+        h4 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+        
+        img {
+            display: block;
+            margin: 0 auto;
+            max-width: 300px;
+            height: auto;
+            margin-top: 20px;
+        }
+        
+        p {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+        
+        span {
+            display: block;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+        
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background-color: #2b8a3e;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        
+        button:hover {
+            background-color: #7048e8;
+        }
+    </style>
 </head>
 <body>
-    <style>
-    body {
-        background-color: #adb5bd;
-        font-family: Arial, sans-serif;
-        margin-left: 35%;
-        padding: 0;
-        
-    }
-
-    .product-container{
-        margin-top: 10%;
-    }
-
-    .product-title {
-        font-size: 24px;
-        margin-top: 10px;
-    }
-
-    .product-description {
-        font-size: 16px;
-        color: #212529;
-        margin-top: 10px;
-    }
-
-    .product-price {
-        font-size: 20px;
-        color: #212529;
-        display: block;
-        margin-top: 10px;
-    }
-
-    .add-to-cart-btn {
-        background-color: #2b8a3e;
-        color: #212529;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 4px;
-        cursor: pointer;
-        margin-top: 20px;
-        font-size: 20px;
-    }
-
-    .add-to-cart-btn:hover {
-        background-color: #7048e8;
-    }
-    .images{
-        width: 40%;
-        border-radius: 30%;
-    }
-</style>
-    <h1 class="heading">Product Details</h1>
-    <div class="product-container">
-        <img src="{{ product.image.url }}" alt="{{ product.title}}" class="images">
-        <h2 class="product-title"> {{ product.title}}</h2>
-        <p class="product-description"> {{ product.description}}</p>
-        <span class="product-price"> {{ product.price}}</span>
-        <button class="add-to-cart-btn">Add to cart</button>
-    </div>
-
+    <h4>{{ product.name }}</h4>
+    <img src="{{ product.image.url }}" alt="{{ product.name }} Image">
+    <p>{{ product.description }}</p>
+    <span>{{ product.price }}</span>
+    
+    <a href="{% url 'cart_list_view' %}"><button>Add to Cart</button></a>
 </body>
 </html>

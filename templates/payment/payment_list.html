@@ -71,13 +71,8 @@
             <p class="payment"> {{ payment.customer_id}}</p>
             <p class="payment"> {{ payment.order_id}}</p>
     
-            <div class="payment"> 
-                <a href="{% url 'payment_detail_view' id=payment.id %}">View Details</a>
-
-                <a href="{% url 'payment_update_view' id=payment.id %}" class="edit">Edit Details</a>
-        </div> 
-
-
+    
+            
         </div>
         {% endfor%}
     </div>
