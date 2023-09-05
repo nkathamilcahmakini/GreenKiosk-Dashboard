@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'products',
     'vendor',
     'cart',
-    'refund'
+    'refund',
+    'rest_framework',
 
 
     
