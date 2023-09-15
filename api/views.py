@@ -1,9 +1,13 @@
+from cart.models import Cart
+from inventory.models import Product
+from order.models import Order
+from payment.models import Payment
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status 
 from customer.models import Customer
 from vendor.models import Vendor
-from .serializers import CustomerSerializer, OrderSerializer, PaymentSerializer
+from .serializers import CustomerSerializer, OrderSerializer, PaymentSerializer, ProductSerializer
 from .serializers import VendorSerializer
 
 class CustomerListView(APIView):
@@ -39,39 +43,39 @@ class CustomerDetailView(APIView):
         customer.delete()
         return Response("Customer deleted" , status=status.HTTP_204_NO_CONTENT)
     
-class CartListView(APIView):
-    def get(self, request):
-        carts=Cart.objects.all()
-        serializer= CartSerializer(carts,many=True)
-        return Response(serializer.data)
+# class CartListView(APIView):
+#     def get(self, request):
+#         carts=Cart.objects.all()
+#         serializer= CartSerializer(carts,many=True)
+#         return Response(serializer.data)
     
-    def post(self,request):
-        serializer=CartSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data,status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+#     def post(self,request):
+#         serializer=CartSerializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data,status=status.HTTP_201_CREATED)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-class CartDetailView(APIView):
-    def get(self,request,id, format=None):
-        cart= self.get_object(id)
-        serializer= CartSerializer(cart)
-        return Response(serializer.data)
+# class CartDetailView(APIView):
+#     def get(self,request,id, format=None):
+#         cart= self.get_object(id)
+#         serializer= CartSerializer(cart)
+#         return Response(serializer.data)
     
-    def put(self, request, id, format=None):
-        cart = self.get_object(id)
-        serializer=CartSerializer(cart,data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+#     def put(self, request, id, format=None):
+#         cart = self.get_object(id)
+#         serializer=CartSerializer(cart,data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    def delete(self,request,id, format=None):
-        cart= self.get_object(id)
-        cart.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-    
-    # .........................................
+#     def delete(self,request,id, format=None):
+#         cart= self.get_object(id)
+#         cart.delete()
+#         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
 
 class ProductListView(APIView):
     def get(self,request):
@@ -104,10 +108,9 @@ class ProductDetailView(APIView):
         product= self.get_object(id)
         product.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)  
-    
 
-    
-    # ............................................  
+
+ 
 class OrderListView(APIView):
     def get(self,request):
         orders =Order.objects.all()
@@ -139,8 +142,9 @@ class OrderDetailView(APIView):
         order= self.get_object(id)
         order.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-    
-# ..............................................
+
+
+
 class PaymentListView(APIView):
     def get(self,request):
         payments =Payment.objects.all()
@@ -172,6 +176,8 @@ class PaymentDetailView(APIView):
         payment= self.get_object(id)
         payment.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
 # ........................................
 # class ShippingListView(APIView):
 #     def get(self,request):
@@ -204,7 +210,9 @@ class PaymentDetailView(APIView):
 #         shipping= self.get_object(id)
 #         shipping.delete()
 #         return Response(status=status.HTTP_204_NO_CONTENT)
-    # .................................
+    
+    
+
 class VendorListView(APIView):
     def get(self,request):
         vendors=Vendor.objects.all()
